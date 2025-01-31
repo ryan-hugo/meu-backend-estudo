@@ -26,4 +26,14 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(f"Você enviou: {post_data.decode('utf-8')}".enconde())
         
-    
+        
+        
+def run(server_class=HTTPServer, handler_class=SimpleHTTPRequestHandler, port=8080):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f"Servidor rodando na porta {port}. . .")
+    httpd.serve_forever()
+        
+        
+if __name__ == '__main__':
+    run()
